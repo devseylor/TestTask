@@ -17,6 +17,10 @@ namespace Movement
             if (Input.GetMouseButtonDown(0) && _currentWaypointIndex == 0)
             {
                 MoveTo(GetCurrentWaypoint());
+            }
+            if (!_playerPath.IsEnemyInWaypoint(_currentWaypointIndex))
+            {
+                MoveTo(GetCurrentWaypoint());
                 NextWaypoint();
             }
         }
