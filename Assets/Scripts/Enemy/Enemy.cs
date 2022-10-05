@@ -3,31 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+namespace RPG.EnemyBehaviour
 {
-    [SerializeField] private float _healthPoint;
-
-    [SerializeField] private bool _isDead = false;
-
-    public void TakeDamage(float damage)
+    public class Enemy : MonoBehaviour
     {
-        _healthPoint = Mathf.Max(_healthPoint - damage, 0);
+        [SerializeField] private float _healthPoint;
 
-        if(_healthPoint == 0)
+        [SerializeField] private bool _isDead = false;
+
+        public void TakeDamage(float damage)
         {
-            Die();
+            _healthPoint = Mathf.Max(_healthPoint - damage, 0);
+
+            if (_healthPoint == 0)
+            {
+                Die();
+            }
         }
-    }
 
-    private void Die()
-    {
-        if (_isDead) return;
-        _isDead = true;
-        //Add Rigdoll
-    }
+        private void Die()
+        {
+            if (_isDead) return;
+            _isDead = true;
+            //Add Rigdoll
+        }
 
-    public bool IsAlive()
-    {
-        return _isDead;
+        public bool IsAlive()
+        {
+            return _isDead;
+        }
     }
 }

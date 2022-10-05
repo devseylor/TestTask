@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Movement
+namespace RPG.Movement
 {
     public class Mover : MonoBehaviour
     {
@@ -20,8 +20,8 @@ namespace Movement
             }
             if (!_playerPath.IsEnemyInWaypoint(_currentWaypointIndex))
             {
-                MoveTo(GetCurrentWaypoint());
                 NextWaypoint();
+                MoveTo(GetCurrentWaypoint());
             }
         }
 

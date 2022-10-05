@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using RPG.EnemyBehaviour;
 
-namespace Movement
+namespace RPG.Movement
 {
     public class PlayerPath : MonoBehaviour
     {
@@ -18,7 +16,6 @@ namespace Movement
                 Gizmos.DrawSphere(GetWaypoint(i), 0.5f);
                 Gizmos.DrawLine(GetWaypoint(i), GetWaypoint(j));
                 Gizmos.DrawWireSphere(GetWaypoint(i) + _plusPosition, _enemyInWaypointRadius);
-                IsEnemyInWaypoint(i);
             }
         }
 
@@ -28,7 +25,7 @@ namespace Movement
             foreach(RaycastHit hit in hits)
             {
                 Enemy enemy = hit.collider.GetComponent<Enemy>();
-                if(enemy != null && !enemy.IsAlive())
+                if(enemy && !enemy.IsAlive())
                 {
                     return true;
                 }
