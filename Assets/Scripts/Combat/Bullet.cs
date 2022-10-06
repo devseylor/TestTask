@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
-using RPG.EnemyBehaviour;
+using RPG.Attributes;
 
 namespace RPG.Combat 
 {
@@ -39,7 +39,7 @@ namespace RPG.Combat
             _bulletPool.Release(this);
             if (other.CompareTag("Enemy"))
             {
-                other.gameObject.GetComponent<Enemy>().TakeDamage(_damage);
+                other.gameObject.GetComponent<Health>().TakeDamage(_damage);
             }
         }
 

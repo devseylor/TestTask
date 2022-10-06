@@ -1,5 +1,5 @@
 using UnityEngine;
-using RPG.EnemyBehaviour;
+using RPG.Attributes;
 
 namespace RPG.Movement
 {
@@ -25,7 +25,7 @@ namespace RPG.Movement
             RaycastHit[] hits = Physics.SphereCastAll(GetWaypoint(i) + _plusPosition, _enemyInWaypointRadius, Vector3.up, 0);
             foreach(RaycastHit hit in hits)
             {
-                Enemy enemy = hit.collider.GetComponent<Enemy>();
+                Health enemy = hit.collider.GetComponent<Health>();
                 if(enemy && !enemy.IsAlive())
                 {
                     return true;

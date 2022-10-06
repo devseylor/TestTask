@@ -3,13 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.EnemyBehaviour 
+namespace RPG.Attributes 
 {
-    public class Enemy : MonoBehaviour
+    public class Health : MonoBehaviour
     {
         [SerializeField] private float _healthPoint;
 
         [SerializeField] private bool _isDead = false;
+
+        private float _healthPointsAtStart;
+
+        private void Start()
+        {
+            _healthPointsAtStart = _healthPoint;
+        }
 
         public void TakeDamage(float damage)
         {
@@ -21,16 +28,28 @@ namespace RPG.EnemyBehaviour
             }
         }
 
+        public float GetFraction()
+        {
+            return _healthPoint / _healthPointsAtStart;
+        }
+
         private void Die()
         {
             if (_isDead) return;
             _isDead = true;
-            //Add Rigdoll
+            StartCoroutine(RagdallDilay());
         }
 
         public bool IsAlive()
         {
             return _isDead;
+        }
+
+        IEnumerator RagdallDilay()
+        {
+            GetComponent<Rigidbody>().AddForce(100f * Vector3.up);
+            yield return new WaitForSeconds(0.3f);
+            GetComponent<RagdollController>().TurnOnRagdall();
         }
     }
 }
