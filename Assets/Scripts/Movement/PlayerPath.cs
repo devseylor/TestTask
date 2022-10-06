@@ -7,6 +7,7 @@ namespace RPG.Movement
     {
         [SerializeField] private float _enemyInWaypointRadius;
         Vector3 _plusPosition = new Vector3(0, 0, 5);
+
         private void OnDrawGizmos()
         {
             for (int i = 0; i < transform.childCount; i++)
@@ -37,6 +38,11 @@ namespace RPG.Movement
         {
             if (i + 1 == transform.childCount) return i;
             return i + 1;
+        }
+
+        public int CountWaypoints()
+        {
+            return transform.childCount -1;
         }
 
         public Vector3 GetWaypoint(int i)

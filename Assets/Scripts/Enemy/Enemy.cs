@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.EnemyBehaviour
+namespace RPG.EnemyBehaviour 
 {
     public class Enemy : MonoBehaviour
     {
@@ -34,3 +34,5 @@ namespace RPG.EnemyBehaviour
         }
     }
 }
+
+
